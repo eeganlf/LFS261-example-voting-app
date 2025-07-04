@@ -52,10 +52,10 @@ pipeline {
         }
 
       }
-      when {
-        branch 'master'
-        changeset '**/worker/**'
-      }
+    //   when {
+    //     branch 'master'
+    //     changeset '**/worker/**'
+    //   }
       steps {
         echo 'Packaging worker app'
         dir(path: 'worker') {
@@ -68,10 +68,10 @@ pipeline {
 
     stage('worker-docker-package') {
       agent any
-      when {
-        changeset '**/worker/**'
-        branch 'master'
-      }
+    //   when {
+    //     changeset '**/worker/**'
+    //     branch 'master'
+    //   }
       steps {
         echo 'Packaging worker app with docker'
         script {
@@ -93,9 +93,9 @@ pipeline {
         }
 
       }
-      when {
-        changeset '**/result/**'
-      }
+    //   when {
+    //     changeset '**/result/**'
+    //   }
       steps {
         echo 'Compiling result app..'
         dir(path: 'result') {
@@ -112,9 +112,9 @@ pipeline {
         }
 
       }
-      when {
-        changeset '**/result/**'
-      }
+    //   when {
+    //     changeset '**/result/**'
+    //   }
       steps {
         echo 'Running Unit Tests on result app..'
         dir(path: 'result') {
@@ -127,10 +127,10 @@ pipeline {
 
     stage('result-docker-package') {
       agent any
-      when {
-        changeset '**/result/**'
-        branch 'master'
-      }
+    //   when {
+    //     changeset '**/result/**'
+    //     branch 'master'
+    //   }
       steps {
         echo 'Packaging result app with docker'
         script {
@@ -152,9 +152,9 @@ pipeline {
         }
 
       }
-      when {
-        changeset '**/vote/**'
-      }
+    //   when {
+    //     changeset '**/vote/**'
+    //   }
       steps {
         echo 'Compiling vote app.'
         dir(path: 'vote') {
@@ -172,9 +172,9 @@ pipeline {
         }
 
       }
-      when {
-        changeset '**/vote/**'
-      }
+    //   when {
+    //     changeset '**/vote/**'
+    //   }
       steps {
         echo 'Running Unit Tests on vote app.'
         dir(path: 'vote') {
@@ -187,10 +187,10 @@ pipeline {
 
     stage('vote integration'){ 
     agent any 
-    when{ 
-      changeset "**/vote/**" 
-      branch 'master' 
-    } 
+    // when{ 
+    //   changeset "**/vote/**" 
+    //   branch 'master' 
+    // } 
     steps{ 
       echo 'Running Integration Tests on vote app' 
       dir('vote'){ 
@@ -220,9 +220,9 @@ pipeline {
 
     stage('deploy to dev') {
       agent any
-      when {
-        branch 'master'
-      }
+    //   when {
+    //     branch 'master'
+    //   }
       steps {
         echo 'Deploy instavote app with docker compose'
         sh 'docker-compose up -d'
