@@ -1,5 +1,7 @@
-Example Voting App
+Example Voting App - modified
 =========
+
+testing
 
 Getting started
 ---------------
